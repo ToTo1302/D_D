@@ -1,0 +1,520 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Checkout example for Bootstrap</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/checkout/">
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="styles.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+
+    <div class="texto container">
+        <div class="py-5 text-center">
+            <h2>Capítulo I: Creación de personajes</h2>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <h4 class="mb-3">Ficha de personaje</h4>
+                <form class="needs-validation" novalidate onsubmit="return validateForm()">
+                    <div class="container">
+                        <div class="row">
+                            <!-- Imagen de referencia -->
+                            <div class="col-sm-3 p-3 text-center d-flex align-items-center">
+                                <div class="col">
+                                    <img src="https://cdn.pixabay.com/photo/2017/11/10/05/48/user-2935527_1280.png" alt="Foto" class="img-fluid">
+
+                                </div>
+                            </div>
+
+                            <div class="col-sm-9 d-flex align-items-center">
+                                <div class="col">
+                                    <div class="row pb-1">
+                                        <!-- Nombre -->
+                                        <div class="col-md-4">
+                                            <label for="firstName">Nombre</label>
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" id="name" placeholder="Nombre" value="" required>
+                                                <div class="input-group-append">
+                                                    <button class="btn btn-outline-secondary" type="button" onclick="setRandomName()"> Random </button>
+                                                </div>
+                                            </div>
+                                            <div class="invalid-feedback">
+                                                Valid first name is required.
+                                            </div>
+                                        </div>
+                                        <!-- Raza -->
+                                        <div class="col-md-4">
+                                            <label for="raza">Raza</label>
+                                            <select class="form-control" id="raza" required>
+                                              <option value="" disabled selected>Selecciona una raza</option>
+                                              <option value="elfo">Elfo</option>
+                                              <option value="enano">Enano</option>
+                                              <option value="mediano">Mediano</option>
+                                              <option value="humano">Humano</option>
+                                            </select>
+                                            <div class="invalid-feedback">
+                                                Selecciona una raza válida.
+                                            </div>
+                                            <div id="textoInformativo" class="mt-2"></div>
+                                        </div>
+                                        <!-- Clase -->
+                                        <div class="col-md-4">
+                                            <label for="raza">Clase</label>
+                                            <select class="form-control" id="clase" required>
+                                              <option value="" disabled selected>Selecciona una clase</option>
+                                              <option value="guerrero">Guerrero</option>
+                                              <option value="hechicero">Hechicero</option>
+                                              <option value="bribon">Bribón</option>
+                                            </select>
+                                            <div class="invalid-feedback">
+                                                Selecciona una clase válida.
+                                            </div>
+                                            <div id="textoInformativoclase" class="mt-2"></div>
+                                        </div>
+                                    </div>
+                                    <div class="row pt-4">
+                                        <!-- Nivel -->
+                                        <div class="col-md-6">
+                                            <label for="nivel">Nivel</label>
+                                            <div class="input-group">
+                                                <input type="number" class="form-control text-center" id="nivel" placeholder="1" value="1" readonly>
+                                            </div>
+                                        </div>
+                                        <!-- PR -->
+                                        <div class="col-md-6">
+                                            <label for="firstName">PR</label>
+                                            <input type="text" class="form-control" id="pr" placeholder="" value="" required>
+                                            <div class="invalid-feedback">
+                                                Valid PR is required.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row pt-4">
+                                        <!-- Talentos por raza -->
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Talento 1</label>
+                                                <input type="text" class="form-control" id="talento1" readonly>
+                                                <div id="talento1Descripcion" class="mt-2"></div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Talento 2</label>
+                                                <input type="text" class="form-control" id="talento2" readonly>
+                                                <div id="talento2Descripcion" class="mt-2"></div>
+                                            </div>
+                                        </div>
+                                        <!-- Talentos por Clase -->
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Talento 3</label>
+                                                <input type="text" class="form-control" id="talento3" readonly>
+                                                <div id="talento3Descripcion" class="mt-2"></div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Talento 4</label>
+                                                <input type="text" class="form-control" id="talento4" readonly>
+                                                <div id="talento4Descripcion" class="mt-2"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Trasfondo -->
+                                    <div class="row pt-4">
+                                        <div class="col-md">
+                                            <div class="form-group">
+                                                <label for="mensaje">Trasfondos</label>
+                                                <textarea class="form-control" id="mensaje" rows="4"></textarea>
+                                            </div>
+                                            <div class="invalid-feedback">
+                                                Valid first name is required.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr class="mb-4">
+
+                    <div class="container">
+                        <h4 class="mb-3">Habilidades</h4>
+                        <div class="row">
+                            <!-- Alerta, comunicacion, manipulacion, erudicion, subterfugio, supervivencia -->
+                            <div class="col-sm-4 p-1 text-center d-flex align-items-center">
+                                <div class="col">
+                                    <div class="row pb-3 text-center d-flex align-items-center">
+                                        <div class="col">
+                                            <label for="puntosTotales">Puntos totales</label>
+                                        </div>
+                                        <div class="col">
+                                            <input type="text" class="form-control" id="puntosTotales" placeholder="" value="4" readonly>
+                                        </div>
+                                    </div>
+                                    <!-- Alerta -->
+                                    <div class="row pb-3 text-center d-flex align-items-center">
+                                        <div class="col">
+                                            <label for="alerta">Alerta</label>
+                                        </div>
+                                        <div class="col">
+                                            <div class="input-group">
+                                                <button class="btn btn-outline-secondary" type="button" onclick="disminuirValor('alerta')">-</button>
+                                                <input type="text" class="form-control" id="alerta" placeholder="" value="0" readonly>
+                                                <button class="btn btn-outline-secondary" type="button" onclick="aumentarValor('alerta')">+</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Comunicacion -->
+                                    <div class="row pb-3 text-center d-flex align-items-center">
+                                        <div class="col">
+                                            <label for="comunicacion">Comunicación</label>
+                                        </div>
+                                        <div class="col">
+                                            <div class="input-group">
+                                                <button class="btn btn-outline-secondary" type="button" onclick="disminuirValor('comunicacion')">-</button>
+                                                <input type="text" class="form-control" id="comunicacion" placeholder="" value="0" readonly>
+                                                <button class="btn btn-outline-secondary" type="button" onclick="aumentarValor('comunicacion')">+</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Manipulacion -->
+                                    <div class="row pb-3 text-center d-flex align-items-center">
+                                        <div class="col">
+                                            <label for="manipulacion">Manipulación</label>
+                                        </div>
+                                        <div class="col">
+                                            <div class="input-group">
+                                                <button class="btn btn-outline-secondary" type="button" onclick="disminuirValor('manipulacion')">-</button>
+                                                <input type="text" class="form-control" id="manipulacion" placeholder="" value="0" readonly>
+                                                <button class="btn btn-outline-secondary" type="button" onclick="aumentarValor('manipulacion')">+</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Erudicion -->
+                                    <div class="row pb-3 text-center d-flex align-items-center">
+                                        <div class="col">
+                                            <label for="erudicion">Erudición</label>
+                                        </div>
+                                        <div class="col">
+                                            <div class="input-group">
+                                                <button class="btn btn-outline-secondary" type="button" onclick="disminuirValor('erudicion')">-</button>
+                                                <input type="text" class="form-control" id="erudicion" placeholder="" value="0" readonly>
+                                                <button class="btn btn-outline-secondary" type="button" onclick="aumentarValor('erudicion')">+</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Subterfugio -->
+                                    <div class="row pb-3 text-center d-flex align-items-center">
+                                        <div class="col">
+                                            <label for="subterfugio">Subterfugio</label>
+                                        </div>
+                                        <div class="col">
+                                            <div class="input-group">
+                                                <button class="btn btn-outline-secondary" type="button" onclick="disminuirValor('subterfugio')">-</button>
+                                                <input type="text" class="form-control" id="subterfugio" placeholder="" value="0" readonly>
+                                                <button class="btn btn-outline-secondary" type="button" onclick="aumentarValor('subterfugio')">+</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- supervivencia -->
+                                    <div class="row pb-3 text-center d-flex align-items-center">
+                                        <div class="col">
+                                            <label for="supervivencia">Supervivencia</label>
+                                        </div>
+                                        <div class="col">
+                                            <div class="input-group">
+                                                <button class="btn btn-outline-secondary" type="button" onclick="disminuirValor('supervivencia')">-</button>
+                                                <input type="text" class="form-control" id="supervivencia" placeholder="" value="0" readonly>
+                                                <button class="btn btn-outline-secondary" type="button" onclick="aumentarValor('supervivencia')">+</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="HabilidadesAlerta" class="mt-2"></div>
+                                </div>
+                            </div>
+                            <!-- Fuerza, destreza, contitucion, inteligencia, sabiduria, carisma -->
+                            <div class="col-sm-5 p-1 text-center d-flex align-items-center">
+                                <div class="col">
+                                    <div class="row pb-3 text-center d-flex align-items-center">
+                                        <div class="col">
+
+                                        </div>
+                                        <div class="col">
+                                            <label for="">Valor</label>
+                                        </div>
+                                        <div class="col">
+                                            <label for="">Modificador</label>
+                                        </div>
+                                        <div class="col">
+                                            <label for=""></label>
+                                        </div>
+                                    </div>
+                                    <!-- Fuerza -->
+                                    <div class="row pb-3 text-center d-flex align-items-center">
+                                        <div class="col">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <label for="firstName">Fuerza</label>
+                                                </div>
+                                                <div class="col">
+                                                    <input type="text" class="form-control" id="FuerzaResultado" placeholder="" value="0" required readonly>
+                                                </div>
+                                                <div class="col">
+                                                    <input type="text" class="form-control" id="FuerzaModificador" placeholder="" value="0" required readonly>
+                                                </div>
+                                                <div class="col">
+                                                    <button class="btn btn-primary" onclick="generarValores('Fuerza')">Generar</button>
+                                                </div>
+                                            </div>
+                                            <div class="col text-center">
+                                                <div id="FuerzaDescripcion" class="mt-2 text-center"></div>
+                                                <!-- Añadida la clase text-center aquí -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Destreza -->
+                                    <div class="row pb-3 text-center d-flex align-items-center">
+                                        <div class="col">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <label for="firstName">Destreza</label>
+                                                </div>
+                                                <div class="col">
+                                                    <input type="text" class="form-control" id="DestrezaResultado" placeholder="" value="0" required readonly>
+                                                </div>
+                                                <div class="col">
+                                                    <input type="text" class="form-control" id="DestrezaModificador" placeholder="" value="0" required readonly>
+                                                </div>
+                                                <div class="col">
+                                                    <button class="btn btn-primary" onclick="generarValores('Destreza')">Generar</button>
+                                                </div>
+                                            </div>
+                                            <div class="col text-center">
+                                                <div id="DestrezaDescripcion" class="mt-2 text-center"></div>
+                                                <!-- Añadida la clase text-center aquí -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Constitucion -->
+                                    <div class="row pb-3 text-center d-flex align-items-center">
+                                        <div class="col">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <label for="firstName">Constitución</label>
+                                                </div>
+                                                <div class="col">
+                                                    <input type="text" class="form-control" id="ConstitucionResultado" placeholder="" value="0" required readonly>
+                                                </div>
+                                                <div class="col">
+                                                    <input type="text" class="form-control" id="ConstitucionModificador" placeholder="" value="0" required readonly>
+                                                </div>
+                                                <div class="col">
+                                                    <button class="btn btn-primary" onclick="generarValores('Constitucion')">Generar</button>
+                                                </div>
+                                            </div>
+                                            <div class="col text-center">
+                                                <div id="ConstitucionDescripcion" class="mt-2 text-center"></div>
+                                                <!-- Añadida la clase text-center aquí -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Inteligencia -->
+                                    <div class="row pb-3 text-center d-flex align-items-center">
+                                        <div class="col">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <label for="firstName">Inteligencia</label>
+                                                </div>
+                                                <div class="col">
+                                                    <input type="text" class="form-control" id="InteligenciaResultado" placeholder="" value="0" required readonly>
+                                                </div>
+                                                <div class="col">
+                                                    <input type="text" class="form-control" id="InteligenciaModificador" placeholder="" value="0" required readonly>
+                                                </div>
+                                                <div class="col">
+                                                    <button class="btn btn-primary" onclick="generarValores('Inteligencia')">Generar</button>
+                                                </div>
+                                            </div>
+                                            <div class="col text-center">
+                                                <div id="InteligenciaDescripcion" class="mt-2 text-center"></div>
+                                                <!-- Añadida la clase text-center aquí -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Sabiduria -->
+                                    <div class="row pb-3 text-center d-flex align-items-center">
+                                        <div class="col">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <label for="firstName">Sabiduría</label>
+                                                </div>
+                                                <div class="col">
+                                                    <input type="text" class="form-control" id="SabiduriaResultado" placeholder="" value="0" required readonly>
+                                                </div>
+                                                <div class="col">
+                                                    <input type="text" class="form-control" id="SabiduriaModificador" placeholder="" value="0" required readonly>
+                                                </div>
+                                                <div class="col">
+                                                    <button class="btn btn-primary" onclick="generarValores('Sabiduria')">Generar</button>
+                                                </div>
+                                            </div>
+                                            <div class="col text-center">
+                                                <div id="SabiduriaDescripcion" class="mt-2 text-center"></div>
+                                                <!-- Añadida la clase text-center aquí -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Carisma -->
+                                    <div class="row pb-3 text-center d-flex align-items-center">
+                                        <div class="col">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <label for="firstName">Carisma</label>
+                                                </div>
+                                                <div class="col">
+                                                    <input type="text" class="form-control" id="CarismaResultado" placeholder="" value="0" required readonly>
+                                                </div>
+                                                <div class="col">
+                                                    <input type="text" class="form-control" id="CarismaModificador" placeholder="" value="0" required readonly>
+                                                </div>
+                                                <div class="col">
+                                                    <button class="btn btn-primary" onclick="generarValores('Carisma')">Generar</button>
+                                                </div>
+                                            </div>
+                                            <div class="col text-center">
+                                                <div id="CarismaDescripcion" class="mt-2 text-center"></div>
+                                                <!-- Añadida la clase text-center aquí -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Pv, movimiento, defensa, ataque, instinto, poder -->
+                            <div class="col-sm-3 p-1 text-center d-flex align-items-center">
+                                <div class="col">
+                                    <!-- PV -->
+                                    <div class="row pb-3 text-center d-flex align-items-center">
+                                        <div class="col">
+                                            <label for="firstName">PV</label>
+                                        </div>
+                                        <div class="col">
+                                            <input type="text" class="form-control" id="PVHabilidades" placeholder="" value="0" required readonly>
+                                        </div>
+                                    </div>
+                                    <!-- Movimiento -->
+                                    <div class="row pb-3 text-center d-flex align-items-center">
+                                        <div class="col">
+                                            <label for="firstName">Movimiento</label>
+                                        </div>
+                                        <div class="col">
+                                            <input type="text" class="form-control" id="MovimientoHabilidades" placeholder="" value="0" required readonly>
+                                        </div>
+                                    </div>
+                                    <!-- Defensa -->
+                                    <div class="row pb-3 text-center d-flex align-items-center">
+                                        <div class="col">
+                                            <label for="firstName">Defensa</label>
+                                        </div>
+                                        <div class="col">
+                                            <input type="text" class="form-control" id="DefensaHabilidades" placeholder="" value="10" required readonly>
+                                        </div>
+                                    </div>
+                                    <!-- Ataque -->
+                                    <div class="row pb-3 text-center d-flex align-items-center">
+                                        <div class="col">
+                                            <label for="firstName">Ataque</label>
+                                        </div>
+                                        <div class="col">
+                                            <input type="text" class="form-control" id="AtaqueHabilidades" placeholder="" value="0" required readonly>
+                                        </div>
+                                    </div>
+                                    <!-- Instinto -->
+                                    <div class="row pb-3 text-center d-flex align-items-center">
+                                        <div class="col">
+                                            <label for="firstName">Instinto</label>
+                                        </div>
+                                        <div class="col">
+                                            <input type="text" class="form-control" id="InstintoHabilidades" placeholder="" value="0" required readonly>
+                                        </div>
+                                    </div>
+                                    <!-- Poder -->
+                                    <div class="row pb-3 text-center d-flex align-items-center">
+                                        <div class="col">
+                                            <label for="firstName">Poder</label>
+                                        </div>
+                                        <div class="col">
+                                            <input type="text" class="form-control" id="PoderHabilidades" placeholder="" value="0" required readonly>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr class="mb-4">
+
+                    <div class="container">
+                        <div class="row pt-4">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="mensaje">Armas</label>
+                                    <textarea class="form-control" id="mensaje" rows="4"></textarea>
+                                </div>
+                                <div class="invalid-feedback">
+                                    Valid first name is required.
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="mensaje">Equipo</label>
+                                    <textarea class="form-control" id="mensaje" rows="4"></textarea>
+                                </div>
+                                <div class="invalid-feedback">
+                                    Valid first name is required.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr class="mb-4">
+
+                    <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
+                </form>
+            </div>
+        </div>
+
+        <footer class="my-5 pt-5 text-muted text-center text-small">
+            <p class="mb-1">&copy; 2017-2018 Company Name</p>
+            <ul class="list-inline">
+                <li class="list-inline-item"><a href="#">Privacy</a></li>
+                <li class="list-inline-item"><a href="#">Terms</a></li>
+                <li class="list-inline-item"><a href="#">Support</a></li>
+            </ul>
+        </footer>
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>
+        window.jQuery || document.write('<script src="js/vendor/jquery-slim.min.js"><\/script>')
+    </script>
+    <script src="js/vendor/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/vendor/holder.min.js"></script>
+    <script src="js/script.js"></script>
+
+</body>
+
+</html>

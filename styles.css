@@ -1,0 +1,12 @@
+div {
+    /*border: 2px solid #000; /* Ancho: 2px, Estilo: sólido, Color: negro (#000) */
+}
+
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+
+.texto{
+    font-family: Georgia, serif;
+}
